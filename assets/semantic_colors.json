@@ -1,0 +1,206 @@
+{
+  "light": {
+    "text": {
+      "fg": "black",
+      "fg.muted": "gray.600",
+      "fg.subtle": "gray.400",
+      "fg.inverted": "gray.50",
+      "fg.error": "red.500",
+      "fg.warning": "orange.600",
+      "fg.success": "green.600",
+      "fg.info": "blue.600"
+    },
+    "gray": {
+      "contrast": "white",
+      "fg": "gray.800",
+      "subtle": "gray.100",
+      "muted": "gray.200",
+      "emphasized": "gray.300",
+      "solid": "gray.900",
+      "focusRing": "gray.800"
+    },
+    "red": {
+      "contrast": "white",
+      "fg": "red.700",
+      "subtle": "red.100",
+      "muted": "red.200",
+      "emphasized": "red.300",
+      "solid": "red.500",
+      "focusRing": "red.600"
+    },
+    "pink": {
+      "contrast": "white",
+      "fg": "pink.700",
+      "subtle": "pink.100",
+      "muted": "pink.200",
+      "emphasized": "pink.300",
+      "solid": "pink.500",
+      "focusRing": "pink.600"
+    },
+    "purple": {
+      "contrast": "white",
+      "fg": "purple.700",
+      "subtle": "purple.100",
+      "muted": "purple.200",
+      "emphasized": "purple.300",
+      "solid": "purple.500",
+      "focusRing": "purple.600"
+    },
+    "cyan": {
+      "contrast": "white",
+      "fg": "cyan.700",
+      "subtle": "cyan.100",
+      "muted": "cyan.200",
+      "emphasized": "cyan.300",
+      "solid": "cyan.500",
+      "focusRing": "cyan.600"
+    },
+    "blue": {
+      "contrast": "white",
+      "fg": "blue.700",
+      "subtle": "blue.100",
+      "muted": "blue.200",
+      "emphasized": "blue.300",
+      "solid": "blue.500",
+      "focusRing": "blue.600"
+    },
+    "teal": {
+      "contrast": "white",
+      "fg": "teal.700",
+      "subtle": "teal.100",
+      "muted": "teal.200",
+      "emphasized": "teal.300",
+      "solid": "teal.500",
+      "focusRing": "teal.600"
+    },
+    "green": {
+      "contrast": "white",
+      "fg": "green.700",
+      "subtle": "green.100",
+      "muted": "green.200",
+      "emphasized": "green.300",
+      "solid": "green.500",
+      "focusRing": "green.600"
+    },
+    "yellow": {
+      "contrast": "black",
+      "fg": "yellow.800",
+      "subtle": "yellow.100",
+      "muted": "yellow.200",
+      "emphasized": "yellow.300",
+      "solid": "yellow.300",
+      "focusRing": "yellow.300"
+    },
+    "orange": {
+      "contrast": "white",
+      "fg": "orange.700",
+      "subtle": "orange.100",
+      "muted": "orange.200",
+      "emphasized": "orange.300",
+      "solid": "orange.500",
+      "focusRing": "orange.600"
+    }
+  },
+  "dark": {
+    "text": {
+      "fg": "gray.50",
+      "fg.muted": "gray.400",
+      "fg.subtle": "gray.500",
+      "fg.inverted": "black",
+      "fg.error": "red.400",
+      "fg.warning": "orange.300",
+      "fg.success": "green.300",
+      "fg.info": "blue.300"
+    },
+    "gray": {
+      "contrast": "gray.800",
+      "fg": "gray.200",
+      "subtle": "gray.900",
+      "muted": "gray.800",
+      "emphasized": "gray.700",
+      "solid": "white",
+      "focusRing": "gray.200"
+    },
+    "red": {
+      "contrast": "white",
+      "fg": "red.300",
+      "subtle": "red.900",
+      "muted": "red.800",
+      "emphasized": "red.700",
+      "solid": "red.600",
+      "focusRing": "red.600"
+    },
+    "pink": {
+      "contrast": "white",
+      "fg": "pink.300",
+      "subtle": "pink.900",
+      "muted": "pink.800",
+      "emphasized": "pink.700",
+      "solid": "pink.600",
+      "focusRing": "pink.600"
+    },
+    "purple": {
+      "contrast": "white",
+      "fg": "purple.300",
+      "subtle": "purple.900",
+      "muted": "purple.800",
+      "emphasized": "purple.700",
+      "solid": "purple.600",
+      "focusRing": "purple.600"
+    },
+    "cyan": {
+      "contrast": "white",
+      "fg": "cyan.300",
+      "subtle": "cyan.900",
+      "muted": "cyan.800",
+      "emphasized": "cyan.700",
+      "solid": "cyan.600",
+      "focusRing": "cyan.600"
+    },
+    "blue": {
+      "contrast": "white",
+      "fg": "blue.300",
+      "subtle": "blue.900",
+      "muted": "blue.800",
+      "emphasized": "blue.700",
+      "solid": "blue.600",
+      "focusRing": "blue.600"
+    },
+    "teal": {
+      "contrast": "white",
+      "fg": "teal.300",
+      "subtle": "teal.900",
+      "muted": "teal.800",
+      "emphasized": "teal.700",
+      "solid": "teal.600",
+      "focusRing": "teal.600"
+    },
+    "green": {
+      "contrast": "white",
+      "fg": "green.300",
+      "subtle": "green.900",
+      "muted": "green.800",
+      "emphasized": "green.700",
+      "solid": "green.600",
+      "focusRing": "green.600"
+    },
+    "yellow": {
+      "contrast": "black",
+      "fg": "yellow.300",
+      "subtle": "yellow.900",
+      "muted": "yellow.800",
+      "emphasized": "yellow.700",
+      "solid": "yellow.300",
+      "focusRing": "yellow.300"
+    },
+    "orange": {
+      "contrast": "black",
+      "fg": "orange.300",
+      "subtle": "orange.900",
+      "muted": "orange.800",
+      "emphasized": "orange.700",
+      "solid": "orange.500",
+      "focusRing": "orange.500"
+    }
+  }
+}
