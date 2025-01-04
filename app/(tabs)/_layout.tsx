@@ -1,14 +1,20 @@
 import { Tabs } from "expo-router";
-import React from "react";
+import React, { useEffect } from "react";
 import { Platform, View } from "react-native";
 
 import { HapticTab } from "@/components/HapticTab";
 import { IconSymbol } from "@/components/ui/IconSymbol";
 import TabBarBackground from "@/components/ui/TabBarBackground";
 import { useTheme } from "@/contexts/ThemeProvider";
+import { useStore } from "@/store/timers";
 
 export default function TabLayout() {
   const { primaryPrimitiveColor, theme } = useTheme();
+  const fetchTimers = useStore((store) => store.fetch);
+
+  useEffect(() => {
+    fetchTimers();
+  }, []);
 
   return (
     <Tabs

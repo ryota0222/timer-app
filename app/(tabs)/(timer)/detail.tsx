@@ -2,11 +2,7 @@ import { Alert, StyleSheet, Text, View } from "react-native";
 import Container from "@/components/Container";
 import { ThemedText } from "@/components/ThemedText";
 import { useCallback, useEffect, useRef, useState } from "react";
-import {
-  deleteTimer,
-  getData as getDataOfTimers,
-  updateTimer,
-} from "@/store/timers";
+import { useStore } from "@/store/timers";
 import { Timer } from "@/types/timer";
 import { Picker } from "@react-native-picker/picker";
 import { useTheme } from "@/contexts/ThemeProvider";
@@ -33,7 +29,9 @@ import Constants from "expo-constants";
 
 export default function DetailScreen() {
   const bottomSheetRef = useRef<BottomSheetModal>(null);
-
+  const updateData = useStore((store) => store.updateData);
+  const deleteData = useStore((store) => store.deleteData);
+  const timers = useStore((store) => store.data);
   const { theme, semanticColors, primarySemanticColor, primitiveColors } =
     useTheme();
   const [timer, setTimer] = useState<Timer | null>(null);
@@ -102,12 +100,12 @@ export default function DetailScreen() {
     setModalVisible(false);
   };
 
-  const updateTimerData = async () => {
+  const updateTimer = async () => {
     Haptics.selectionAsync();
-    await updateTimer({
+    await updateData({
       id: timer?.id || "",
       title: name,
-      seconds: hour * 60 * 60 + minute * 60 + second,
+      seconds: Number(hour) * 60 * 60 + Number(minute) * 60 + Number(second),
       category: category,
       sortIndex: timer?.sortIndex || 0,
     });
@@ -120,7 +118,7 @@ export default function DetailScreen() {
     navigation.goBack();
   };
 
-  const deleteTimerData = () => {
+  const deleteTimer = () => {
     Haptics.selectionAsync();
     Alert.alert("タイマーを削除します。", "よろしいですか？", [
       {
@@ -131,7 +129,7 @@ export default function DetailScreen() {
         text: "削除",
         style: "destructive",
         onPress: () => {
-          deleteTimer(timer!.id);
+          deleteData(timer!.id);
           navigation.goBack();
           Toast.show({
             type: "success",
@@ -145,11 +143,10 @@ export default function DetailScreen() {
   };
 
   useEffect(() => {
-    if (params.id) {
+    if (params.id && timers) {
       const func = async () => {
         const categories = await getDataOfCategories();
         setCategories(categories);
-        const timers = await getDataOfTimers();
         const timer = timers.find((t) => t.id === params.id);
         if (timer) {
           setTimer(timer);
@@ -160,7 +157,7 @@ export default function DetailScreen() {
         headerShown: true,
       });
     }
-  }, [params.id]);
+  }, [params.id, timers]);
 
   useEffect(() => {
     if (timer) {
@@ -184,7 +181,7 @@ export default function DetailScreen() {
         ),
         headerShown: true,
         headerRight: () => (
-          <Pressable onPress={deleteTimerData}>
+          <Pressable onPress={deleteTimer}>
             <IconSymbol
               name="trash.fill"
               size={20}
@@ -211,7 +208,7 @@ export default function DetailScreen() {
             style={styles.pickerContainer}
             itemStyle={[styles.time, { color: semanticColors?.text.fg }]}
             selectedValue={hour}
-            onValueChange={(itemValue) => setHour(itemValue)}
+            onValueChange={(itemValue) => setHour(Number(itemValue))}
           >
             {[...Array(11).keys()].map((i) => (
               <Picker.Item key={i} label={String(i)} value={i} />
@@ -231,7 +228,7 @@ export default function DetailScreen() {
             style={styles.pickerContainer}
             itemStyle={[styles.time, { color: semanticColors?.text.fg }]}
             selectedValue={minute}
-            onValueChange={(itemValue) => setMinute(itemValue)}
+            onValueChange={(itemValue) => setMinute(Number(itemValue))}
           >
             {[...Array(60).keys()].map((i) => (
               <Picker.Item key={i} label={String(i)} value={i} />
@@ -251,7 +248,7 @@ export default function DetailScreen() {
             style={styles.pickerContainer}
             itemStyle={[styles.time, { color: semanticColors?.text.fg }]}
             selectedValue={second}
-            onValueChange={(itemValue) => setSecond(itemValue)}
+            onValueChange={(itemValue) => setSecond(Number(itemValue))}
           >
             {[...Array(60).keys()].map((i, index) => (
               <Picker.Item key={index} label={String(index)} value={index} />
@@ -339,7 +336,7 @@ export default function DetailScreen() {
         </View>
         <View style={{ marginTop: 40 }}>
           <ThemedButton
-            onPress={updateTimerData}
+            onPress={updateTimer}
             primaryColor={primarySemanticColor!}
           >
             更新

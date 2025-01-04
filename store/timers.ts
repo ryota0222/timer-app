@@ -119,7 +119,21 @@ const addTimer = async ({
   return newTimers;
 };
 
-export const useStore = create((set) => ({
+export const useStore = create<{
+  data: Timer[] | null;
+  fetch: () => Promise<void>;
+  updateData: (newData: Timer) => Promise<void>;
+  deleteData: (id: string) => Promise<void>;
+  createData: ({
+    title,
+    category,
+    seconds,
+  }: {
+    title: string;
+    category: Category | null;
+    seconds: number;
+  }) => Promise<void>;
+}>((set) => ({
   data: null,
   fetch: async () => {
     const storedData = await getData();
@@ -129,8 +143,20 @@ export const useStore = create((set) => ({
     const updatedData = await updateTimer(newData);
     set({ data: updatedData });
   },
-  clearData: async () => {
-    await AsyncStorage.removeItem("myData");
-    set({ data: null });
+  deleteData: async (id: string) => {
+    const updatedData = await deleteTimer(id);
+    set({ data: updatedData });
+  },
+  createData: async ({
+    title,
+    category,
+    seconds,
+  }: {
+    title: string;
+    category: Category | null;
+    seconds: number;
+  }) => {
+    const updatedData = await addTimer({ title, category, seconds });
+    set({ data: updatedData });
   },
 }));

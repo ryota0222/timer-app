@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from "react-native";
 import Container from "@/components/Container";
 import { ThemedText } from "@/components/ThemedText";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { addTimer } from "@/store/timers";
+import { useStore } from "@/store/timers";
 import { Picker } from "@react-native-picker/picker";
 import { useTheme } from "@/contexts/ThemeProvider";
 import { IconSymbol } from "@/components/ui/IconSymbol";
@@ -25,7 +25,7 @@ import Constants from "expo-constants";
 
 export default function CreateScreen() {
   const bottomSheetRef = useRef<BottomSheetModal>(null);
-
+  const addTimer = useStore((state) => state.createData);
   const { theme, semanticColors, primarySemanticColor, primitiveColors } =
     useTheme();
   const navigation = useNavigation();

@@ -9,9 +9,10 @@ import { router } from "expo-router";
 
 interface Props {
   data: Timer;
+  onPlay: () => void;
 }
 
-export const TimerCard = ({ data }: Props) => {
+export const TimerCard = ({ data, onPlay }: Props) => {
   const { semanticColors, primarySemanticColor } = useTheme();
 
   const timeLabel = useMemo(() => {
@@ -25,13 +26,6 @@ export const TimerCard = ({ data }: Props) => {
     }
     return `${minutes}:${String(seconds).padStart(2, "0")}`;
   }, [data.seconds]);
-
-  const onPlay = () => {
-    // event.stopPropagation();
-    Haptics.selectionAsync();
-    console.log("Play the timer");
-    Alert.alert("Play", "Play the timer");
-  };
 
   const gotoDetail = () => {
     Haptics.selectionAsync();
